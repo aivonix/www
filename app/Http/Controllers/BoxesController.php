@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Boxes;
 use Illuminate\Http\Request;
 
 class BoxesController extends Controller
@@ -13,7 +14,7 @@ class BoxesController extends Controller
      */
     public function index()
     {
-        //
+        return view('boxes/index', ['boxes' => Boxes::all()]);
     }
 
     /**
