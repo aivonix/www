@@ -12,9 +12,11 @@ class BoxesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+    private $options = ['red','blue','green','cyan','magenta','yellow','black'];
     public function index()
     {
-        return view('boxes/index', ['boxes' => Boxes::all()]);
+        return response()->json(Boxes::all());
     }
 
     /**
@@ -24,7 +26,9 @@ class BoxesController extends Controller
      */
     public function create()
     {
-        //
+        return view('boxes.edit', [
+            'options' => $this->options,
+        ]);
     }
 
     /**
@@ -35,7 +39,12 @@ class BoxesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Boxes::create($request->validate([
+            'title' => 'required|string',
+            'link' => 'required|url',
+            'colour' => 'nullable|string',
+        ]));
+        return redirect('/');
     }
 
     /**
@@ -57,7 +66,10 @@ class BoxesController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('boxes.edit', [
+            'box' => current(Boxes::where('id', $id)->get()->toArray()),
+            'options' => $this->options,
+        ]);
     }
 
     /**
@@ -69,7 +81,12 @@ class BoxesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Boxes::where('id', $id)->update($request->validate([
+            'title' => 'required|string',
+            'link' => 'required|url',
+            'colour' => 'nullable|string',
+        ]));
+        return redirect('/');
     }
 
     /**
@@ -80,6 +97,7 @@ class BoxesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Boxes::where('id', $id)->delete();
+        return redirect('/');
     }
 }

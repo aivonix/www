@@ -1,3 +1,6 @@
-@foreach ($boxes as $box)
-<p>{{ $box['title'] }}</p>
-@endforeach
+@extends('layouts.app')
+
+@section('content')
+<boxes></boxes>
+@endsection
+

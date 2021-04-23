@@ -16,4 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/boxes', [App\Http\Controllers\BoxesController::class, 'index'])->name('boxes');
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('boxes', App\Http\Controllers\BoxesController::class);
+
