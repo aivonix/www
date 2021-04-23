@@ -16,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/boxes', [App\Http\Controllers\BoxesController::class, 'index'])->name('boxes');
