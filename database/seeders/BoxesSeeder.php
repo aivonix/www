@@ -14,7 +14,7 @@ class BoxesSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('boxes')->insert(['title' => '', 'link' => '', 'colour' => 'red' ]);
+        DB::table('boxes')->insert(['title' => '', 'link' => '', 'colour' => null ]);
         DB::table('boxes')->insert(['title' => '', 'link' => '', 'colour' => null ]);
         DB::table('boxes')->insert(['title' => '', 'link' => '', 'colour' => null ]);
         DB::table('boxes')->insert(['title' => '', 'link' => '', 'colour' => null ]);
